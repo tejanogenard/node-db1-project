@@ -10,5 +10,6 @@ server.use(express.json());
 
 server.use("/accounts", accountRouter)
 
+
 module.exports = server;
  
