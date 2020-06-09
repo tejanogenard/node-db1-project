@@ -27,4 +27,21 @@ router.get('/', (req, res) => {
         })
 })
 
+//GET a new account by the id  
+router.get('/:id', (req, res) => {
+    //select * from accounts where id = req.params.id 
+    knex
+        .from('accounts')
+        .select("*")
+        .where({ id: req.params.id })
+        .first()
+        .then(accounts => {
+            res.status(200).json({ data: accounts})
+        })
+        .catch(error => {
+            console.log("GET / error", error);
+            res.status(500).json({ message: error.message });
+          });
+    })
+
 module.exports = router; 
